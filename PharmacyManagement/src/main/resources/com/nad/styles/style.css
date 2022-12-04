@@ -1,0 +1,20 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Author     : thien thien
+*/
+
+VBox {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+HBox {
+    -fx-spacing: 10;
+}
+
+.menu{
+    -fx-alignment: center;
+}

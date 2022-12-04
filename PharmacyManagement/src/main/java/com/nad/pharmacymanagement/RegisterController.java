@@ -60,7 +60,7 @@ public class RegisterController implements Initializable {
 
         User user = new User();
         
-        user.setId(Integer.parseInt(txtID.getText()));
+        user.setId(0);
         user.setUserName(txtUserName.getText());
         user.setPassWord(txtPassWord.getText());
         user.setFirstName(txtFirstName.getText());
@@ -72,6 +72,8 @@ public class RegisterController implements Initializable {
    
         UserServices u = new UserServices();
         
+        
+
         
         if (txtUserName.getText().isEmpty()) {
             Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!",
@@ -92,13 +94,12 @@ public class RegisterController implements Initializable {
             return;
         }
           
-        if (txtPassWord.getText().equals(txtNhapLaiMatKhau.getText()) ) {
-            u.dangKy(user);
-            Utils.showAlert(Alert.AlertType.CONFIRMATION, owner, "Đăng ký thành công!",
-            "Xin chào " + txtUserName.getText());
-            return;
-        }else
+        if (!txtPassWord.getText().equals(txtNhapLaiMatKhau.getText()) ) {
             Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Mật khẩu không khớp");
+            return;
+        }
+        
+        u.dangKy(user);
            
 
     }

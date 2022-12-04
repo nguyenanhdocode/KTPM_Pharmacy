@@ -64,10 +64,11 @@ public class LoginController implements Initializable{
         User newUser = us.dangNhap(user);
 
         if(newUser != null) {
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("primary.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("FXMLMenu.fxml"));
             Parent root = fxmlLoader.load();
 
-            PrimaryController sceneMenu = fxmlLoader.getController();
+            MenuController sceneMenu = fxmlLoader.getController();
+            
           
 
             Scene scene = new Scene(root);

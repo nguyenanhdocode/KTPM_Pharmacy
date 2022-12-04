@@ -1,11 +1,10 @@
 com\nad\pharmacymanagement\App.class
 com\nad\pharmacymanagement\SecondaryController.class
-com\nad\services\UserServices.class
-com\nad\pharmacymanagement\PrimaryController.class
-com\nad\pharmacymanagement\RegisterController.class
 com\nad\pojo\SellMedicine.class
-com\nad\utils\Utils.class
 module-info.class
-com\nad\pojo\Medicine.class
 com\nad\utils\JdbcUtils.class
 com\nad\pojo\User.class
+com\nad\services\UserServices.class
+com\nad\pharmacymanagement\RegisterController.class
+com\nad\utils\Utils.class
+com\nad\pojo\Medicine.class
