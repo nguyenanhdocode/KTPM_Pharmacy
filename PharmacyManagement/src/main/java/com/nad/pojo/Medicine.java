@@ -143,6 +143,9 @@ public class Medicine {
     public void setProducingCountry(String producingCountry) {
         this.producingCountry = producingCountry;
     }
-    
+    @Override
+    public String toString() {
+        return this.brandName;
+    }
     
 }

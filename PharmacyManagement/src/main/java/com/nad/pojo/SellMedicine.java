@@ -5,6 +5,7 @@
 package com.nad.pojo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -13,14 +14,14 @@ import java.sql.Date;
 public class SellMedicine {
     private User userID;
     private Medicine medicineID;
-    private Date date;
+    private Timestamp date;
     private Float unitPrice;
     private Integer quantity;
 
     public SellMedicine() {
     }
 
-    public SellMedicine(User userID, Medicine medicineID, Date date, Float unitPrice, Integer quantity) {
+    public SellMedicine(User userID, Medicine medicineID, Timestamp date, Float unitPrice, Integer quantity) {
         this.userID = userID;
         this.medicineID = medicineID;
         this.date = date;
@@ -59,14 +60,14 @@ public class SellMedicine {
     /**
      * @return the date
      */
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
     /**
      * @param date the date to set
      */
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
