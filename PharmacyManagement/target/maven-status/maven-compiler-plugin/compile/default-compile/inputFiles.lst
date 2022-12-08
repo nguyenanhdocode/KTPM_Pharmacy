@@ -10,6 +10,7 @@ D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharma
 D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\services\UnitServices.java
 D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\utils\Utils.java
 D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\PrimaryController.java
+D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\SellMedicineStatController.java
 D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\services\SellMedicineServices.java
 D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\LoginController.java
 D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\SellMedicine.java
@@ -17,3 +18,4 @@ D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\U
 D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\User.java
 D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\RegisterController.java
 D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\module-info.java
+D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\Stat.java

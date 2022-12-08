@@ -5,9 +5,11 @@
 package com.nad.services;
 
 import com.nad.pojo.SellMedicine;
+import com.nad.pojo.Stat;
 import com.nad.utils.JdbcUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -55,6 +57,27 @@ public class SellMedicineServices {
 
                 return 1;
             }  
+        }
+    }
+    public Stat sumSellByYear(Integer nam) throws SQLException {
+        try (Connection conn = JdbcUtils.getConn()) {
+            Stat stat = null;
+            
+            PreparedStatement stm = conn.prepareStatement(
+                    "SELECT SUM(`Quantity`) AS 'tong_so_luong', "
+                            + "EXTRACT(YEAR FROM `Date`) AS 'year' "
+                            + "FROM `sell_medicines` "
+                            + "WHERE EXTRACT(YEAR FROM `Date`) = ? ");
+            
+            stm.setInt(1, nam);
+            
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                stat = new Stat();
+                stat.setTongSoLuong(rs.getInt("tong_so_luong"));
+                stat.setNam(rs.getInt("year"));
+            }
+            return stat;
         }
     }
 }

@@ -51,7 +51,7 @@ public class MenuController implements Initializable {
     }
     public void thongKeThuocHandler(ActionEvent evt) throws IOException {
         
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("FXMLMedicineStat.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("FXMLSellMedicineStat.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
