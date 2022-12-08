@@ -14,6 +14,8 @@ import com.nad.services.UnitServices;
 import com.nad.utils.Utils;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -59,8 +61,14 @@ public class SellMedicineController implements Initializable {
     private TextField txtAllowedUnitInStock;
     @FXML
     private TextField txtProducingCountry;
-    
-  
+    @FXML
+    private TextField txtKeywords;
+    @FXML
+    private ComboBox cbxLoaiTimKiem;
+    @FXML
+    private TableView<SellMedicine> tbChuaThanhToan;
+    @FXML
+    private TableView<SellMedicine> tbDaThanhToan;
     @FXML
     private Button btnLamMoi;
    
@@ -70,8 +78,11 @@ public class SellMedicineController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         this.loadTableMedicine();
         this.loadComboBoxUnit();
-        this.reloadTableMedicine(null);
+        this.reloadTableMedicine(null,null);
         this.loadTableSellMedicine();
+        this.bangChuaThanhToan();
+        this.loadColumnsChuaThanhToan();
+        
         this.btnLamMoi.setOnAction(e -> {
             try {
                 refresh();
@@ -100,9 +111,29 @@ public class SellMedicineController implements Initializable {
                
             }
         });
+    txtKeywords.setPromptText("Tìm kiếm");
+    this.txtKeywords.textProperty().addListener((evt) ->{
+        this.reloadTableMedicine(this.txtKeywords.getText(), this.cbxLoaiTimKiem.getSelectionModel().getSelectedIndex());
+    });
+
+    this.cbxLoaiTimKiem.getItems().addAll("Theo ten thuoc", "Theo hoat chat", "Theo quoc gia san xuat");
+    this.cbxLoaiTimKiem.getSelectionModel().select(0);
+    this.cbxLoaiTimKiem.valueProperty().addListener((evt) ->{
+        this.reloadTableMedicine(this.txtKeywords.getText(), this.cbxLoaiTimKiem.getSelectionModel().getSelectedIndex());
+    });
+    
+    this.txtIDMedicine.setEditable(false);
+        this.txtBrandName.setEditable(false);
+        this.txtChemicalName.setEditable(false);
+        this.cbxUnit.setEditable(false);
+        this.txtUnitInStock.setEditable(false);
+        this.txtUnitPrice.setEditable(false);
+        this.txtAllowedUnitInStock.setEditable(false);
+        this.txtProducingCountry.setEditable(false);
     }
+    
      private void refresh() throws SQLException {
-        this.reloadTableMedicine(null);
+        this.reloadTableMedicine(null, null);
         this.txtIDMedicine.clear();
         this.txtBrandName.clear();
         this.txtChemicalName.clear();
@@ -111,6 +142,9 @@ public class SellMedicineController implements Initializable {
         this.txtUnitPrice.clear();
         this.txtAllowedUnitInStock.clear();
         this.txtProducingCountry.clear();
+        this.cbxLoaiTimKiem.getSelectionModel().select(0);
+        this.txtKeywords.clear();
+
      }
     public User getUser() {
         return user;
@@ -133,10 +167,10 @@ public class SellMedicineController implements Initializable {
         }
         return -1;
     }
-    private void reloadTableMedicine(String kw) {
+    private void reloadTableMedicine(String kw, Integer loaiTimKiem) {
         MedicineServices s = new MedicineServices();
         try {
-            this.tbMedicine.setItems(FXCollections.observableList(s.getListMedicine(kw)));
+            this.tbMedicine.setItems(FXCollections.observableList(s.getListMedicine(kw,loaiTimKiem)));
         } catch (SQLException ex) {
             Logger.getLogger(MedicineManagementController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -275,4 +309,74 @@ public class SellMedicineController implements Initializable {
             }
         }
     }
+     private void bangChuaThanhToan() {
+        SellMedicineServices s = new SellMedicineServices();
+        try {
+            this.tbChuaThanhToan.setItems(FXCollections.observableList(s.getListSellMedicine()));
+        } catch (SQLException ex) {
+            Logger.getLogger(SellMedicineController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     private void loadColumnsChuaThanhToan() {
+        TableColumn col1 = new TableColumn("Ma thuoc");
+        col1.setCellValueFactory(new PropertyValueFactory("id"));
+        
+        TableColumn col2 = new TableColumn("Ten thuoc");
+        col2.setCellValueFactory(new PropertyValueFactory("brandName"));
+        
+        TableColumn col3 = new TableColumn("Ma user");
+        col3.setCellValueFactory(new PropertyValueFactory("id"));
+        
+        TableColumn col4 = new TableColumn("Ten user");
+        col4.setCellValueFactory(new PropertyValueFactory("userName"));
+        
+        TableColumn col5 = new TableColumn("Ngay mua");
+        col5.setCellValueFactory(new PropertyValueFactory("date"));
+        
+        TableColumn col6 = new TableColumn("So luong");
+        col6.setCellValueFactory(new PropertyValueFactory("quantity"));
+        
+        TableColumn col7 = new TableColumn("Gia");
+        col6.setCellValueFactory(new PropertyValueFactory("unitPrice"));
+        
+        TableColumn col8 = new TableColumn("");
+        col8.setCellFactory(param -> new TableCell<SellMedicine, String>() {
+            final Button btnThanhToan = new Button("Thanh toan");
+            
+            @Override
+            public void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                    setText(null);
+                } 
+                else {
+                    btnThanhToan.setOnAction(event -> {
+                        SellMedicine sellMedicine = getTableView().getItems().get(getIndex());
+                        SellMedicineServices s = new SellMedicineServices();
+                        
+//                        try {
+//                            sellMedicine.setDate(Timestamp.valueOf(LocalDateTime.now()));
+//                            if(s.thanhToan(sellMedicine) == true) {
+//                                Utils.getBox("Thanh toan thanh cong!", Alert.AlertType.INFORMATION).show();
+//                                tbDaThanhToan.getItems().add(sellMedicine);
+//                                getTableView().getItems().remove(sellMedicine);
+//                            }
+//                            else {
+//                                Utils.getBox("Thanh toan that bai!", Alert.AlertType.WARNING).show();
+//                            }
+//                        }
+//                        catch(Exception e) {
+//                            Utils.getBox("Da co loi xay ra!", Alert.AlertType.WARNING).show();
+//                        }
+                    });
+                    setGraphic(btnThanhToan);
+                    setText(null);
+                }
+            }
+        });
+
+        this.tbChuaThanhToan.getColumns().addAll(col1, col2, col3, col4, col5, col6, col7, col8);
+    }
+    
 }

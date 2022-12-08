@@ -29,6 +29,14 @@ public class SellMedicine {
         this.quantity = quantity;
     }
 
+    public SellMedicine(Medicine medicine, User user, Integer quantity, Timestamp date) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public SellMedicine(Medicine medicine, User user, Timestamp date, Integer unitPrice, Integer quantity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     /**
      * @return the userID
      */

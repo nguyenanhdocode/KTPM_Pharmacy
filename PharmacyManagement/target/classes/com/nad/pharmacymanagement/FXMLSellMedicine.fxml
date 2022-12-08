@@ -81,12 +81,12 @@
                               </HBox>
                            </children>
                         </VBox>
-<!--                        <HBox prefHeight="0.0" prefWidth="600.0">
+                        <HBox prefHeight="0.0" prefWidth="600.0">
                            <children>
                               <ComboBox fx:id="cbxLoaiTimKiem" prefWidth="150.0" />
                               <TextField fx:id="txtKeywords" prefHeight="26.0" prefWidth="443.0" />
                            </children>
-                        </HBox>-->
+                        </HBox>
                         <TableView fx:id="tbMedicine" prefHeight="200.0" prefWidth="600.0" />
                      </children>
                   </VBox>
@@ -99,7 +99,22 @@
                         <TableView fx:id="tbSellMedicine" prefHeight="200.0" prefWidth="200.0" />
                         <Button mnemonicParsing="false" onAction="#SellMedicineHander" text="Bán" />
                      </children></VBox>
-               </content></Tab>
+               </content>
+          </Tab>
+          <Tab text="Thanh toan">
+               <content>
+                  <VBox prefHeight="499.0" prefWidth="900.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thanh Toan" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách chưa thanh toan" />
+                        <TableView fx:id="tbChuaThanhToan" prefHeight="200.0" prefWidth="200.0" />
+<!--                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách đã thanh  toan" />
+                        <TableView fx:id="tbDaThanhToan" prefHeight="200.0" prefWidth="200.0" />-->
+                        
+                     </children>
+                  </VBox>
+               </content>
+          </Tab>
         </tabs>
       </TabPane>
       

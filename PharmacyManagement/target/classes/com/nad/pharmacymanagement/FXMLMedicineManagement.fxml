@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nad.pharmacymanagement.MedicineManagementController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nad.pharmacymanagement.MedicineManagementController">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý Thuốc" />
       <VBox prefHeight="340.0" prefWidth="600.0"><!--
@@ -67,7 +67,12 @@
             </HBox>
          </children>
       </VBox>
-      
+      <HBox prefHeight="0.0" prefWidth="600.0">
+         <children>
+            <ComboBox fx:id="cbxLoaiTimKiem" prefWidth="150.0" />
+            <TextField fx:id="txtKeywords" prefHeight="26.0" prefWidth="442.0" />
+         </children>
+      </HBox>
       <TableView fx:id="tbMedicine" prefHeight="200.0" prefWidth="600.0" /><!--
 -->   </children>
 </VBox>

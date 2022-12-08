@@ -58,7 +58,10 @@ public class MedicineManagementController implements Initializable {
     private TextField txtAllowedUnitInStock;
     @FXML
     private TextField txtProducingCountry;
-    
+    @FXML
+    private TextField txtKeywords;
+    @FXML
+    private ComboBox cbxLoaiTimKiem;
   
     @FXML
     private Button btnLamMoi;
@@ -82,7 +85,7 @@ public class MedicineManagementController implements Initializable {
         });
         this.loadTableMedicine();
         try {
-            this.reloadTableMedicine(null);
+            this.reloadTableMedicine(null,null);
             
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         } catch (SQLException ex) {
@@ -107,6 +110,39 @@ public class MedicineManagementController implements Initializable {
                
             }
         });
+        this.txtUnitInStock.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                txtUnitInStock.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+        this.txtUnitPrice.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                txtUnitPrice.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+        this.txtAllowedUnitInStock.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                txtAllowedUnitInStock.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+        txtKeywords.setPromptText("Tìm kiếm");
+        this.txtKeywords.textProperty().addListener((evt) ->{
+            try {
+                this.reloadTableMedicine(this.txtKeywords.getText(), this.cbxLoaiTimKiem.getSelectionModel().getSelectedIndex());
+            } catch (SQLException ex) {
+                Logger.getLogger(MedicineManagementController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        this.cbxLoaiTimKiem.getItems().addAll("Theo ten thuoc", "Theo hoat chat", "Theo quoc gia san xuat");
+        this.cbxLoaiTimKiem.getSelectionModel().select(0);
+        this.cbxLoaiTimKiem.valueProperty().addListener((evt) ->{
+            try {
+                this.reloadTableMedicine(this.txtKeywords.getText(), this.cbxLoaiTimKiem.getSelectionModel().getSelectedIndex());
+            } catch (SQLException ex) {
+                Logger.getLogger(MedicineManagementController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         
     }
     
@@ -125,7 +161,7 @@ public class MedicineManagementController implements Initializable {
         }
     }
     private void refresh() throws SQLException {
-        this.reloadTableMedicine(null);
+        this.reloadTableMedicine(null, null);
         this.txtBrandName.clear();
         this.txtChemicalName.clear();
         this.cbxUnit.setValue(null);
@@ -133,7 +169,8 @@ public class MedicineManagementController implements Initializable {
         this.txtUnitPrice.clear();
         this.txtAllowedUnitInStock.clear();
         this.txtProducingCountry.clear();
-        
+        this.cbxLoaiTimKiem.getSelectionModel().select(0);
+        this.txtKeywords.clear();
 
     }
     private void loadComboBoxUnit() {
@@ -145,10 +182,10 @@ public class MedicineManagementController implements Initializable {
      
         }
     }
-    private void reloadTableMedicine(String kw) throws SQLException {
+    private void reloadTableMedicine(String kw,Integer loaiTimKiem) throws SQLException {
         MedicineServices s = new MedicineServices();
         try {
-            this.tbMedicine.setItems(FXCollections.observableList(s.getListMedicine(kw)));
+            this.tbMedicine.setItems(FXCollections.observableList(s.getListMedicine(kw,loaiTimKiem)));
         } catch (SQLException ex) {
             Logger.getLogger(MedicineManagementController.class.getName()).log(Level.SEVERE, null, ex);
         }

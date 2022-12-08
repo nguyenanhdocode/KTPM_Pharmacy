@@ -4,8 +4,10 @@
  */
 package com.nad.services;
 
+import com.nad.pojo.Medicine;
 import com.nad.pojo.SellMedicine;
 import com.nad.pojo.Stat;
+import com.nad.pojo.User;
 import com.nad.utils.JdbcUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -78,6 +81,52 @@ public class SellMedicineServices {
                 stat.setNam(rs.getInt("year"));
             }
             return stat;
+        }
+    }
+    public List<SellMedicine> getListSellMedicine() throws SQLException {
+        try (Connection conn = JdbcUtils.getConn()) {
+            PreparedStatement stm = conn.prepareStatement("SELECT * "
+                    + "FROM `sell_medicines` "
+                    + "WHERE `Date` IS NULL ");
+            
+            ResultSet rs = stm.executeQuery();
+            
+            List<SellMedicine> listSellMedicine = new ArrayList<>();
+            while (rs.next()) {  
+                Medicine medicineID = MedicineServices.getMedicineById(rs.getString("ID"));
+                User userID = UserServices.getUserById(rs.getString("ID"));
+                Integer quantity = rs.getInt("Quantity");
+                Timestamp date = rs.getTimestamp("Date");
+                Integer unitPrice = rs.getInt("UnitPrice");
+                
+                listSellMedicine.add(new SellMedicine(medicineID, userID, date, unitPrice, quantity));
+            }
+            
+            return listSellMedicine;
+        }
+    }
+    public boolean thanhToan(SellMedicine sellMedicine) throws SQLException {
+        
+        try (Connection conn = JdbcUtils.getConn()) {
+            conn.setAutoCommit(false);
+
+            PreparedStatement stm = conn.prepareStatement(
+                    "UPDATE `sell_medicines` "
+                            + "SET `UnitPrice`= ? "
+                            + "WHERE `MedicineID` = ?"
+                            + "AND `UserID` = ?"
+                            );
+
+
+            stm.setFloat(1, sellMedicine.getUnitPrice());
+            stm.setInt(2, sellMedicine.getMedicineID().getId());
+            stm.setInt(3, sellMedicine.getUserID().getId());
+            
+
+            stm.executeUpdate();
+            conn.commit();
+
+            return true;
         }
     }
 }
