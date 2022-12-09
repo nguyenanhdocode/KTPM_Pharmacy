@@ -107,7 +107,7 @@ public class MedicineServices {
         return false;
     }
     public boolean delMedicine(Integer maMedicine) throws SQLException {
-        if(maMedicine != null ) {
+        if( maMedicine != null ) {
             try (Connection conn = JdbcUtils.getConn()) {
                 conn.setAutoCommit(false);
                 
@@ -138,8 +138,8 @@ public class MedicineServices {
                                 + "`UnitInStock` = ?, "
                                 + "`UnitPrice` = ?, "
                                 + "`AllowedUnitInStock` = ?, "
-                                + "`ProducingCountry` = ?, "
-                                + "WHERE ID = ?");
+                                + "`ProducingCountry` = ? "
+                                + "WHERE `ID` = ?");
 
                 stm.setString(1, medicine.getBrandName());
                 stm.setString(2, medicine.getChemicalName());
@@ -179,10 +179,28 @@ public class MedicineServices {
         }
         return false;
     }
-    public static Medicine getMedicineById(String maThuoc) throws SQLException {
+    public static boolean checkMedicineExistById(Integer maThuoc) throws SQLException {
+        if (maThuoc != null) {
+            try (Connection conn = JdbcUtils.getConn()) {
+                PreparedStatement stm = conn.prepareStatement("SELECT ID FROM medicines WHERE ID = ?");
+
+                stm.setInt(1, maThuoc);
+                ResultSet rs = stm.executeQuery();
+
+                if (rs.isBeforeFirst()) {
+                    Utils.getBox("Trùng mã thuốc!", Alert.AlertType.INFORMATION).show();
+                    return true;
+                }
+
+                return false;
+            }
+        }
+        return false;
+    }
+    public static Medicine getMedicineById(int maThuoc) throws SQLException {
         try (Connection conn = JdbcUtils.getConn()) {
             PreparedStatement stm = conn.prepareStatement("SELECT * FROM `medicines` WHERE MedicineID = ?");
-            stm.setString(1, maThuoc);
+            stm.setInt(1, maThuoc);
             ResultSet rs = stm.executeQuery();
 
             Medicine medicine = null;

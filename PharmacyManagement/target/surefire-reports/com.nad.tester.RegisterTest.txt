@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.nad.tester.RegisterTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 5.05 s <<< FAILURE! - in com.nad.tester.RegisterTest
-com.nad.tester.RegisterTest.testRegister  Time elapsed: 1.845 s  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 6.164 s <<< FAILURE! - in com.nad.tester.RegisterTest
+com.nad.tester.RegisterTest.testRegister  Time elapsed: 2.039 s  <<< ERROR!
 java.lang.ExceptionInInitializerError
 	at javafx.controls/javafx.scene.control.DialogPane.createContentLabel(DialogPane.java:167)
 	at javafx.controls/javafx.scene.control.DialogPane.<init>(DialogPane.java:218)
@@ -10,8 +10,7 @@ java.lang.ExceptionInInitializerError
 	at javafx.controls/javafx.scene.control.Alert.<init>(Alert.java:247)
 	at javafx.controls/javafx.scene.control.Alert.<init>(Alert.java:222)
 	at com.nad.pharmacymanagement/com.nad.utils.Utils.getBox(Utils.java:16)
-	at com.nad.pharmacymanagement/com.nad.services.UserServices.checkDocGiaExist(UserServices.java:35)
-	at com.nad.pharmacymanagement/com.nad.services.UserServices.dangKy(UserServices.java:43)
+	at com.nad.pharmacymanagement/com.nad.services.UserServices.dangKy(UserServices.java:58)
 	at com.nad.pharmacymanagement/com.nad.tester.RegisterTest.testRegister(RegisterTest.java:64)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
@@ -87,9 +86,9 @@ Caused by: java.lang.IllegalStateException: Toolkit not initialized
 	at javafx.graphics/com.sun.javafx.application.PlatformImpl.setPlatformUserAgentStylesheet(PlatformImpl.java:695)
 	at javafx.graphics/com.sun.javafx.application.PlatformImpl.setDefaultPlatformUserAgentStylesheet(PlatformImpl.java:657)
 	at javafx.controls/javafx.scene.control.Control.<clinit>(Control.java:99)
-	... 77 more
+	... 76 more
 
-com.nad.tester.RegisterTest.testRegisterErr  Time elapsed: 0.195 s  <<< ERROR!
+com.nad.tester.RegisterTest.testRegisterErr  Time elapsed: 0.171 s  <<< ERROR!
 java.lang.NoClassDefFoundError: Could not initialize class javafx.scene.control.Label
 	at javafx.controls/javafx.scene.control.DialogPane.createContentLabel(DialogPane.java:167)
 	at javafx.controls/javafx.scene.control.DialogPane.<init>(DialogPane.java:218)
@@ -175,8 +174,7 @@ Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionI
 	at javafx.controls/javafx.scene.control.Alert.<init>(Alert.java:247)
 	at javafx.controls/javafx.scene.control.Alert.<init>(Alert.java:222)
 	at com.nad.pharmacymanagement/com.nad.utils.Utils.getBox(Utils.java:16)
-	at com.nad.pharmacymanagement/com.nad.services.UserServices.checkDocGiaExist(UserServices.java:35)
-	at com.nad.pharmacymanagement/com.nad.services.UserServices.dangKy(UserServices.java:43)
+	at com.nad.pharmacymanagement/com.nad.services.UserServices.dangKy(UserServices.java:58)
 	at com.nad.pharmacymanagement/com.nad.tester.RegisterTest.testRegister(RegisterTest.java:64)
 	... 68 more
 

@@ -147,5 +147,9 @@ public class Medicine {
     public String toString() {
         return this.brandName;
     }
+
+    public void setUnitPrice(double d) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

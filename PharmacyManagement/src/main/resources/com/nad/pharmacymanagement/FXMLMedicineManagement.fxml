@@ -18,6 +18,12 @@
 -->         <children>
             <HBox prefHeight="0.0" prefWidth="600.0">
                <children>
+                  <Text  strokeWidth="0.0" text="Mã thuốc" />
+                  <TextField fx:id="txtId" prefHeight="26.0" prefWidth="541.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="0.0" prefWidth="600.0">
+               <children>
                   <Text  strokeWidth="0.0" text="Tên thuốc" />
                   <TextField fx:id="txtBrandName" prefHeight="26.0" prefWidth="541.0" />
                </children>

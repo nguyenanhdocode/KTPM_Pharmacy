@@ -53,7 +53,7 @@ public class RegisterTest {
         User user = new User();
         
         user.setId(714490483);
-        user.setUserName("hai2");
+        user.setUserName("haik2");
         user.setPassWord("1");
         user.setFirstName("hai");
         user.setLastName("Phan");
@@ -68,7 +68,7 @@ public class RegisterTest {
         Assertions.assertNotEquals(user.getUserName(), newUser.getUserName());
     }  
     @Test
-    @Order(1)
+    @Order(2)
     public void testRegisterErr() throws SQLException {
         User user = new User();
         

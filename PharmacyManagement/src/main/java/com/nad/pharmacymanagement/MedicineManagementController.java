@@ -44,7 +44,8 @@ public class MedicineManagementController implements Initializable {
 
     @FXML
     private TableView<Medicine> tbMedicine;
-    
+    @FXML
+    private TextField txtId;
     @FXML
     private TextField txtBrandName;
     @FXML
@@ -96,7 +97,7 @@ public class MedicineManagementController implements Initializable {
         }
         this.tbMedicine.setOnMouseClicked((MouseEvent event) -> {
             if (event.getClickCount() > 0) {
-
+                this.txtId.setText(Integer.toString(tbMedicine.getSelectionModel().getSelectedItem().getId()));
                 this.txtBrandName.setText(tbMedicine.getSelectionModel().getSelectedItem().getBrandName());
                 this.txtChemicalName.setText(tbMedicine.getSelectionModel().getSelectedItem().getChemicalName());
                 int maUnit = tbMedicine.getSelectionModel().getSelectedItem().getUnitId();
@@ -113,6 +114,7 @@ public class MedicineManagementController implements Initializable {
                
             }
         });
+        this.txtId.setEditable(false);
         this.txtUnitInStock.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtUnitInStock.setText(newValue.replaceAll("[^\\d]", ""));
@@ -165,6 +167,7 @@ public class MedicineManagementController implements Initializable {
     }
     private void refresh() throws SQLException {
         this.reloadTableMedicine(null, null);
+        this.txtId.clear();
         this.txtBrandName.clear();
         this.txtChemicalName.clear();
         this.cbxUnit.setValue(null);
@@ -342,13 +345,7 @@ public class MedicineManagementController implements Initializable {
             Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Chưa nhập giá");
         }
         
-        
-//        if (txtAllowedUnitInStock.getText().equals("0") || txtAllowedUnitInStock.getText().isEmpty()) {
-//            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Nhập số lượng tối đa và phải khác 0");
-//            return;
-//        }else{
-//            medicine.setUnitPrice(parseFloatOrNull(txtUnitPrice.getText()));
-//        } 
+ 
                
         if (txtProducingCountry.getText().isEmpty()) {
             Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Chưa nhập quốc gia sản xuất");
@@ -372,7 +369,7 @@ public class MedicineManagementController implements Initializable {
         
             Medicine medicine = new Medicine();
 
-            medicine.setId(0);
+            medicine.setId(parseIntOrNull(txtId.getText()));
             medicine.setBrandName(txtBrandName.getText());
             medicine.setChemicalName(txtChemicalName.getText());
             medicine.setUnitId(1);
@@ -391,7 +388,6 @@ public class MedicineManagementController implements Initializable {
                 refresh();
                 Utils.getBox("Sua thanh cong!", Alert.AlertType.INFORMATION).show();
             }
-
             else {
                 Utils.getBox("Da co loi xay ra!", Alert.AlertType.WARNING).show();
             }
