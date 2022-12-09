@@ -36,7 +36,7 @@
             </HBox>
             <HBox prefHeight="0.0" prefWidth="600.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tồn kho" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng nhập" />
                   <TextField fx:id="txtUnitInStock" prefHeight="26.0" prefWidth="512.0" />
                </children>
             </HBox>
@@ -60,7 +60,7 @@
             </HBox>
             <HBox prefHeight="0.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#addMedicineHandler" text="Nhập thuốc" />
+                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#addMedicineHandler" text="Nhập thuốc" />
                   <Button mnemonicParsing="false" onAction="#editMedicineHandler" text="Sửa" />
                    <Button fx:id="btnLamMoi" mnemonicParsing="false" text="Làm mới" />
                </children>

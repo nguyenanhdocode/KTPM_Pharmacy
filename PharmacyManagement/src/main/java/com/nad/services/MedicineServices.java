@@ -4,6 +4,7 @@
  */
 package com.nad.services;
 
+import com.nad.pharmacymanagement.MedicineManagementController;
 import com.nad.pojo.Medicine;
 import com.nad.pojo.SellMedicine;
 import com.nad.utils.JdbcUtils;
@@ -15,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.control.Alert;
 
 /**
@@ -22,40 +25,6 @@ import javafx.scene.control.Alert;
  * @author thien thien
  */
 public class MedicineServices {
-//    public List<Medicine> getListMedicine(String kw) throws SQLException {
-//        try (Connection conn = JdbcUtils.getConn()) {
-//            PreparedStatement stm = conn.prepareStatement("SELECT * FROM `medicines` "
-//                    + "WHERE (BrandName like concat('%',?,'%')) OR (ChemicalName like concat('%',?,'%'))");
-//            if (kw == null)
-//                kw = "";
-//            
-//            stm.setString(1, kw);
-//            stm.setString(2, kw);
-//
-//           
-//            ResultSet rs = stm.executeQuery();
-//            
-//            List<Medicine> listMedicine = new ArrayList<>();
-//            while (rs.next()) {                
-//                
-//                Integer id = rs.getInt("ID");
-//                String brandName = rs.getString("BrandName") ;
-//                String chemicalName = rs.getString("ChemicalName");
-//                Integer unitId = rs.getInt("UnitID");
-//                Integer unitInStock = rs.getInt("UnitInStock");
-//                Float unitPrice = rs.getFloat("UnitPrice") ;
-//                Integer allowedUnitInStock = rs.getInt("AllowedUnitInStock");
-//                String producingCountry = rs.getString("ProducingCountry");
-//                
-//                
-//                
-//                
-//                listMedicine.add(new Medicine(id, brandName, chemicalName, unitId, unitInStock, unitPrice, allowedUnitInStock, producingCountry));
-//            }
-//            
-//            return listMedicine;
-//        }
-//    }
     public List<Medicine> getListMedicine(String kw, Integer loaiTimKiem) throws SQLException {
         try (Connection conn = JdbcUtils.getConn()) {
             PreparedStatement stm;

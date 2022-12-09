@@ -34,6 +34,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Window;
 
 /**
  *
@@ -65,6 +66,8 @@ public class MedicineManagementController implements Initializable {
   
     @FXML
     private Button btnLamMoi;
+    @FXML
+    private Button submitButton;
     
     
     
@@ -204,7 +207,7 @@ public class MedicineManagementController implements Initializable {
         TableColumn col4 = new TableColumn("Ma don vi");
         col4.setCellValueFactory(new PropertyValueFactory("unitId"));
         
-        TableColumn col5 = new TableColumn("Ton kho");
+        TableColumn col5 = new TableColumn("So luong nhap");
         col5.setCellValueFactory(new PropertyValueFactory("unitInStock"));
         
         TableColumn col6 = new TableColumn("Gia");
@@ -258,32 +261,110 @@ public class MedicineManagementController implements Initializable {
         this.tbMedicine.getColumns().addAll(col1, col2, col3, col4, col5, col6, col7, col8, col9);
     }
     
+    
     public void addMedicineHandler(ActionEvent evt) throws SQLException {
-        if(this.txtBrandName.getText().isBlank() == false) {
-            Medicine medicine = new Medicine();
-            medicine.setId(0);
-            medicine.setBrandName(txtBrandName.getText());
-            medicine.setChemicalName(txtChemicalName.getText());
+        
+        Medicine medicine = new Medicine();
+        medicine.setId(0);
+        medicine.setBrandName(txtBrandName.getText());
+        medicine.setChemicalName(txtChemicalName.getText());
+        medicine.setAllowedUnitInStock(parseIntOrNull(txtAllowedUnitInStock.getText()));
+        medicine.setProducingCountry(txtProducingCountry.getText());
+
+
+        Window owner = submitButton.getScene().getWindow();
+        if (txtBrandName.getText().isEmpty()) {
+        Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa nhập tên thuốc");
+            return;
+        }
+        if (txtChemicalName.getText().isEmpty()) {
+        Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa nhập hoạt chất");
+            return;
+        }
+
+        if (cbxUnit.getValue() == null) {
+        Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa nhập đơn vị tính");
+            return;
+        }else{
             medicine.setUnitId(cbxUnit.getSelectionModel().getSelectedItem().getId());
-            medicine.setUnitInStock(parseIntOrNull(txtUnitInStock.getText()));
-            medicine.setUnitPrice(parseFloatOrNull(txtUnitPrice.getText()));
-            medicine.setAllowedUnitInStock(parseIntOrNull(txtAllowedUnitInStock.getText()));
-            medicine.setProducingCountry(txtProducingCountry.getText());
+        } 
+        
+        boolean check = false;
+        if (!txtAllowedUnitInStock.getText().isEmpty()) {
+            boolean flag = true;
+            check = true;
+            if (parseIntOrNull(txtAllowedUnitInStock.getText()) == 0) {
+                Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Phải nhập số lượng nhập tối đa khác 0");
+                flag = false;
+                return;
+            }
+            if(flag = true)
+                
+                medicine.setAllowedUnitInStock(parseIntOrNull(txtAllowedUnitInStock.getText()));
+        }else{
+            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Chưa nhập số lượng tối đa");
+        }
+        
+        if (!txtUnitInStock.getText().isEmpty() && check == true) {
+            boolean flag = true;
+            if (parseIntOrNull(txtUnitInStock.getText()) == 0) {
+                Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Phải nhập số lượng khác 0");
+                flag = false;
+                return;
+            }
+            if (parseIntOrNull(txtUnitInStock.getText()) > parseIntOrNull(txtAllowedUnitInStock.getText())) {
+                Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Số lượng thuốc nhập vào phải nhỏ hơn số lượng cho phép");
+                flag=false;
+                return;
+            }
             
+            if(flag = true)
+                medicine.setUnitInStock(parseIntOrNull(txtUnitInStock.getText()));
+            
+        }else{
+            if(check == false)
+                Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Chưa nhập số lượng tối đa");
+            else
+                Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Chưa nhập số lượng nhập vào kho");
+        }
+        
+        
+        if (!txtUnitPrice.getText().isEmpty()) {
+            boolean flag = true;
+            if (parseIntOrNull(txtUnitPrice.getText()) == 0) {
+                Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Phải nhập giá khác 0");
+                flag = false;
+                return;
+            }
+            if(flag = true)
+                medicine.setUnitPrice(parseFloatOrNull(txtUnitPrice.getText()));
+        }else{
+            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Chưa nhập giá");
+        }
+        
+        
+//        if (txtAllowedUnitInStock.getText().equals("0") || txtAllowedUnitInStock.getText().isEmpty()) {
+//            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Nhập số lượng tối đa và phải khác 0");
+//            return;
+//        }else{
+//            medicine.setUnitPrice(parseFloatOrNull(txtUnitPrice.getText()));
+//        } 
+               
+        if (txtProducingCountry.getText().isEmpty()) {
+            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!","Chưa nhập quốc gia sản xuất");
+            return;
+        }
            
-            MedicineServices s = new MedicineServices();       
-            if(s.addMedicine(medicine) == true) {
-//                refresh();
-                Utils.getBox("Them thanh cong!", Alert.AlertType.INFORMATION).show();
-            }
-            else {
-                Utils.getBox("Da co loi xay ra!", Alert.AlertType.WARNING).show();
-            }
+        MedicineServices s = new MedicineServices();       
+        if(s.addMedicine(medicine) == true) {
+            Utils.getBox("Them thuoc thanh cong!", Alert.AlertType.INFORMATION).show();
+            refresh();
         }
         else {
-            Utils.getBox("Ban chua nhap ten thuoc!", Alert.AlertType.WARNING).show();
+            Utils.getBox("Da co loi xay ra!", Alert.AlertType.WARNING).show();
         }
     }
+    
     
     public void editMedicineHandler(ActionEvent evt) throws SQLException {
         if(this.txtBrandName.getText().isBlank() == false) {

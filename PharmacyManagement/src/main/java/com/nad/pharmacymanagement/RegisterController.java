@@ -14,13 +14,16 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 /**
@@ -76,21 +79,29 @@ public class RegisterController implements Initializable {
 
         
         if (txtUserName.getText().isEmpty()) {
-            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!",
-                "Nhập tên UserName");
+            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa nhập tên UserName");
             return;
         }
 
         if (txtFirstName.getText().isEmpty()) {
-            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!",
-                "Nhập tên của bạn");
+            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa nhập tên của bạn");
             return;
         }
-        
-        
+        if (txtLastName.getText().isEmpty()) {
+            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa nhập họ của bạn");
+            return;
+        }
+        if ((!rdbNam.isSelected()&&!rdbNu.isSelected())) {
+            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa chọn giới tính của bạn");
+            return;
+        }
+        if (txtAddress.getText().isEmpty()) {
+            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa nhập địa chỉ của bạn");
+            return;
+        }
+
         if (txtPassWord.getText().isEmpty()) {
-            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!",
-                "Nhập mật khẩu");
+            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Nhập mật khẩu");
             return;
         }
           
@@ -109,4 +120,5 @@ public class RegisterController implements Initializable {
         }else
             return rdbNu.getText();
     }
+    
 }
