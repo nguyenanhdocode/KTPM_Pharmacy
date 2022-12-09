@@ -115,10 +115,35 @@ public class UserServices {
                 return newUser;
         }
     }
-    public static User getUserById(String maUser) throws SQLException {
+    public static User getUserById(Integer maUser) throws SQLException {
         try (Connection conn = JdbcUtils.getConn()) {
             PreparedStatement stm = conn.prepareStatement("SELECT * FROM `users` WHERE `ID` = ?");
-            stm.setString(1, maUser);
+            stm.setInt(1, maUser);
+            ResultSet rs = stm.executeQuery();
+            
+            User user = null;
+            while (rs.next()) {
+                user = new User();
+                
+                user.setId(rs.getInt("ID"));
+                user.setUserName(rs.getString("Username"));
+                user.setPassWord(rs.getString("Password"));
+                user.setFirstName(rs.getString("FirstName"));
+                user.setLastName(rs.getString("LastName"));
+                user.setGender(rs.getString("Gender"));
+                user.setAddress(rs.getString("Address"));
+                
+               
+                break;
+            }
+            
+            return user;
+        }
+    }
+    public static User getUserByUserName(String username) throws SQLException {
+        try (Connection conn = JdbcUtils.getConn()) {
+            PreparedStatement stm = conn.prepareStatement("SELECT * FROM `users` WHERE `Username` = ?");
+            stm.setString(1, username);
             ResultSet rs = stm.executeQuery();
             
             User user = null;

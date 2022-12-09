@@ -94,7 +94,7 @@ public class SellMedicineServices {
             List<SellMedicine> listSellMedicine = new ArrayList<>();
             while (rs.next()) {  
                 Medicine medicineID = MedicineServices.getMedicineById(rs.getString("ID"));
-                User userID = UserServices.getUserById(rs.getString("ID"));
+                User userID = UserServices.getUserById(rs.getInt("ID"));
                 Integer quantity = rs.getInt("Quantity");
                 Timestamp date = rs.getTimestamp("Date");
                 Integer unitPrice = rs.getInt("UnitPrice");
