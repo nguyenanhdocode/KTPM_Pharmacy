@@ -115,15 +115,14 @@ public class MedicineServices {
 
                 stm.setInt(1, maMedicine);
                 
-                stm.executeUpdate();
+                
+                int rowAffected = stm.executeUpdate();
                 conn.commit();
 
-                return true;
+                return rowAffected != 0;
             }
         }
-        else {
-            return false;
-        }
+        return false;
     }
     
     public boolean editMedicine(Medicine medicine) throws SQLException {
@@ -152,10 +151,9 @@ public class MedicineServices {
                 
                 
                 
-                stm.executeUpdate();
+                int affectedRow = stm.executeUpdate();
                 conn.commit();
-
-                return true;
+                return affectedRow != 0;
              }
         }
         return false;
@@ -170,7 +168,7 @@ public class MedicineServices {
                 ResultSet rs = stm.executeQuery();
 
                 if (rs.isBeforeFirst()) {
-                    Utils.getBox("Trùng tên thuốc!", Alert.AlertType.INFORMATION).show();
+                    //Utils.getBox("Trùng tên thuốc!", Alert.AlertType.INFORMATION).show();
                     return true;
                 }
 
@@ -199,7 +197,7 @@ public class MedicineServices {
     }
     public static Medicine getMedicineById(int maThuoc) throws SQLException {
         try (Connection conn = JdbcUtils.getConn()) {
-            PreparedStatement stm = conn.prepareStatement("SELECT * FROM `medicines` WHERE MedicineID = ?");
+            PreparedStatement stm = conn.prepareStatement("SELECT * FROM `medicines` WHERE ID = ?");
             stm.setInt(1, maThuoc);
             ResultSet rs = stm.executeQuery();
 

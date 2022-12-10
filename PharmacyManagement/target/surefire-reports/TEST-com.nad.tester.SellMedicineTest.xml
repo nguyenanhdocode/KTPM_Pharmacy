@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.nad.tester.MedicineTest" time="0.161" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.nad.tester.SellMedicineTest" time="0.166" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="14"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,9 +15,9 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-14.0.2\bin"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\nguye\AppData\Local\Temp\surefire2616171687587244111 2022-12-10T12-07-40_190-jvmRun1 surefire4091695159277192200tmp surefire_09870588563629699041tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\nguye\AppData\Local\Temp\surefire4502103554507947476 2022-12-10T11-38-19_621-jvmRun1 surefire15519640921028745172tmp surefire_08683201227107144171tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="com.nad.tester.MedicineTest#testEditMedicineError01"/>
+    <property name="test" value="com.nad.tester.SellMedicineTest#sellTestUnitInStockError"/>
     <property name="surefire.test.class.path" value="E:\KTPM\KTPM_Pharmacy\PharmacyManagement\target\test-classes;C:\Users\nguye\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13.jar;C:\Users\nguye\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13.jar;C:\Users\nguye\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13.jar;C:\Users\nguye\.m2\repository\org\openjfx\javafx-fxml\13\javafx-fxml-13.jar;C:\Users\nguye\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\nguye\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\nguye\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\nguye\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\nguye\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\nguye\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\nguye\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.7.0-M1\junit-jupiter-params-5.7.0-M1.jar;C:\Users\nguye\.m2\repository\mysql\mysql-connector-java\8.0.28\mysql-connector-java-8.0.28.jar;C:\Users\nguye\.m2\repository\com\google\protobuf\protobuf-java\3.11.4\protobuf-java-3.11.4.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\nguye"/>
@@ -58,5 +58,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="58.0"/>
   </properties>
-  <testcase name="testEditMedicineError01" classname="com.nad.tester.MedicineTest" time="0.029"/>
+  <testcase name="sellTestUnitInStockError" classname="com.nad.tester.SellMedicineTest" time="0.034"/>
 </testsuite>

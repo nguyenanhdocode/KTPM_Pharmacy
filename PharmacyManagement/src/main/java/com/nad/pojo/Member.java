@@ -109,4 +109,8 @@ public class Member {
         this.address = address;
         this.point = point;
     }
+    
+    public Member() {
+        
+    }
 }

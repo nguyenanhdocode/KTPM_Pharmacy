@@ -112,7 +112,7 @@ public class Medicine {
     /**
      * @param unitPrice the unitPrice to set
      */
-    public void setUnitPrice(Float unitPrice) {
+    public void setUnitPrice(float unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -148,8 +148,8 @@ public class Medicine {
         return this.brandName;
     }
 
-    public void setUnitPrice(double d) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    public void setUnitPrice(double d) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
     
 }

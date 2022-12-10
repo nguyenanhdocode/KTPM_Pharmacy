@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.scene.control.Alert;
 import javafx.stage.Window;
+import com.nad.utils.Utils;
 
 /**
  *
@@ -25,7 +26,7 @@ import javafx.stage.Window;
  */
 public class UserServices {
     
-    public static boolean checkDocGiaExist(String username) throws SQLException {
+    public static boolean checkUsernameExist(String username) throws SQLException {
         try (Connection conn = JdbcUtils.getConn()) {
             PreparedStatement stm = conn.prepareStatement("SELECT `Username` FROM `users` WHERE `Username` = ?");
             
@@ -33,7 +34,7 @@ public class UserServices {
             ResultSet rs = stm.executeQuery();
             
             if (rs.isBeforeFirst()) {
-                Utils.getBox("Trùng tên tài khoản!", Alert.AlertType.INFORMATION).show();
+                //Utils.getBox("Trùng tên tài khoản!", Alert.AlertType.INFORMATION).show();
                 return true;
             }
             return false;
@@ -41,7 +42,7 @@ public class UserServices {
     }
     
     public boolean dangKy(User user) throws SQLException {
-        if(user.getId()!= null && checkDocGiaExist(user.getUserName()) == false){
+        if(checkUsernameExist(user.getUserName()) == false){
             try (Connection conn = JdbcUtils.getConn()){
             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO `users` "
                     + "(ID, Username, Password, FirstName,LastName, Gender,Address)"
@@ -56,15 +57,13 @@ public class UserServices {
             preparedStatement.setString(7, user.getAddress());
             
             preparedStatement.executeUpdate();
-            Utils.getBox("Đăng ký tài khoản thành công!", Alert.AlertType.INFORMATION).show();
+            //Utils.getBox("Đăng ký tài khoản thành công!", Alert.AlertType.INFORMATION).show();
             return true;
         }
         }else{
-            Utils.getBox("Đăng ký tài khoản thất bại!", Alert.AlertType.INFORMATION).show();
+            //Utils.getBox("Đăng ký tài khoản thất bại!", Alert.AlertType.INFORMATION).show();
             return false;
         }
-        
-        
     }
     
     public static String getMd5(String input)
@@ -168,6 +167,27 @@ public class UserServices {
     }
     
     public static int MemberRegister(Member member) throws SQLException {
+        
+        if (Utils.isNullOrEmpty(member.getFirstName())){
+            return -1;
+        }
+        
+        if (Utils.isNullOrEmpty(member.getLastName())){
+            return -2;
+        }
+        
+        if (Utils.isNullOrEmpty(member.getPhone())){
+            return -3;
+        }
+        
+        if (!member.getPhone().matches("(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}")) {
+            return -1;
+        }
+        
+        if (Utils.isNullOrEmpty(member.getAddress())){
+            return -1;
+        }
+        
         try(Connection connect = JdbcUtils.getConn()) {
             String sql = "INSERT INTO Members (FirstName, LastName, Phone, Address)"
                     + "VALUES (?, ?, ?, ?)";
@@ -178,5 +198,30 @@ public class UserServices {
             statement.setString(4, member.getAddress());
             return statement.executeUpdate();
         }
+    }
+    
+    public static int CheckInValid(Member member) {
+        
+        if (Utils.isNullOrEmpty(member.getFirstName())){
+            return 1;
+        }
+        
+        if (Utils.isNullOrEmpty(member.getLastName())){
+            return 2;
+        }
+        
+        if (Utils.isNullOrEmpty(member.getPhone())){
+            return 3;
+        }
+        
+        if (!member.getPhone().matches("(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}")) {
+            return 4;
+        }
+        
+        if (Utils.isNullOrEmpty(member.getAddress())){
+            return 5;
+        }
+        
+        return 0;
     }
 }

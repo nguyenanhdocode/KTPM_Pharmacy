@@ -53,25 +53,24 @@ public class MedicineTest {
     public void testAddMedicine() throws SQLException {
         Medicine medicine = new Medicine();
         medicine.setId(0);
-        medicine.setBrandName("cam");
+        medicine.setBrandName("nguyenanhdo");
         medicine.setChemicalName("jjjjka");
         medicine.setUnitId(1);
         medicine.setUnitInStock(8);
-        medicine.setUnitPrice(8);
+        medicine.setUnitPrice(Float.parseFloat("8"));
         medicine.setAllowedUnitInStock(10);
         medicine.setProducingCountry("vn");
         
-        Assertions.assertFalse(s.addMedicine(medicine));
+        Assertions.assertTrue(s.addMedicine(medicine));
         
-        Medicine newMedicine = MedicineServices.getMedicineById(medicine.getId());
-        Assertions.assertNotNull(newMedicine);
-//        Assertions.assertNotEquals(medicine.getId(), newMedicine.getId());
-//        Assertions.assertEquals(sach.getMaDanhMuc(), newSach.getMaDanhMuc());
+//        Medicine newMedicine = MedicineServices.getMedicineById(medicine.getId());
+//        Assertions.assertNotNull(newMedicine);
+
     }
     @Test
     @Order(2)
     public void testDelMedicine() throws SQLException {
-        int maMedicine = 21;
+        int maMedicine = 29;
         
         Assertions.assertTrue(s.delMedicine(maMedicine));
     }
@@ -85,7 +84,7 @@ public class MedicineTest {
     @Order(4)
     public void testEditMedicine() throws SQLException {
         Medicine medicine = new Medicine();
-        medicine.setId(3);
+        medicine.setId(27);
         medicine.setBrandName("cam999");
         medicine.setChemicalName("jjjjka");
         medicine.setUnitId(2);
@@ -100,5 +99,26 @@ public class MedicineTest {
         Assertions.assertNotNull(newMedicine);
         Assertions.assertEquals(medicine.getId(), newMedicine.getId());
         Assertions.assertEquals(medicine.getUnitId(), newMedicine.getUnitId());
+    }
+    
+    @Test
+    @Order(5)
+    public void testEditMedicineError01() throws SQLException {
+        Medicine medicine = new Medicine();
+        medicine.setId(100);
+        medicine.setBrandName("cam999");
+        medicine.setChemicalName("jjjjka");
+        medicine.setUnitId(2);
+        medicine.setUnitInStock(8);
+        medicine.setUnitPrice(8);
+        medicine.setAllowedUnitInStock(10);
+        medicine.setProducingCountry("vn");
+        
+        Assertions.assertFalse(s.editMedicine(medicine));
+        
+        //Medicine newMedicine = MedicineServices.getMedicineById(medicine.getId());
+//        Assertions.assertNotNull(newMedicine);
+//        Assertions.assertEquals(medicine.getId(), newMedicine.getId());
+//        Assertions.assertEquals(medicine.getUnitId(), newMedicine.getUnitId());
     }
 }

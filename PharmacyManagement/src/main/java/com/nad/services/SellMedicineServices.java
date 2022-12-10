@@ -28,38 +28,36 @@ public class SellMedicineServices {
         if(dsSellMedicines.isEmpty()) {
             return -2;
         }
-        else {
-            int tongSoLuong = 0;
-            
+       
+        int tongSoLuong = 0;
+
+        for(SellMedicine sellMedicine: dsSellMedicines) {
+            tongSoLuong += sellMedicine.getQuantity();
+        }
+
+        try (Connection conn = JdbcUtils.getConn()) {
+            conn.setAutoCommit(false);
+            PreparedStatement stm;
+
             for(SellMedicine sellMedicine: dsSellMedicines) {
-                tongSoLuong += sellMedicine.getQuantity();
+                stm = conn.prepareStatement(
+                    "INSERT INTO `sell_medicines`(`MedicineID`, `UserID`, `Date`, `Quantity`) "
+                    + "VALUES (?, ?, ?, ?)");
+
+                stm.setInt(1, sellMedicine.getMedicineID().getId());
+                stm.setInt(2, 1);
+                stm.setInt(4, sellMedicine.getQuantity());
+                if(sellMedicine.getDate() != null)
+                    stm.setTimestamp(3, sellMedicine.getDate());
+                else 
+                    stm.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+
+                stm.executeUpdate();
             }
-            
-           
-            try (Connection conn = JdbcUtils.getConn()) {
-                conn.setAutoCommit(false);
-                PreparedStatement stm;
 
-                for(SellMedicine sellMedicine: dsSellMedicines) {
-                    stm = conn.prepareStatement(
-                        "INSERT INTO `sell_medicines`(`MedicineID`, `UserID`, `Date`, `Quantity`) "
-                        + "VALUES (?, ?, ?, ?)");
+            conn.commit();
 
-                    stm.setInt(1, sellMedicine.getMedicineID().getId());
-                    stm.setInt(2, 1);
-                    stm.setInt(4, sellMedicine.getQuantity());
-                    if(sellMedicine.getDate() != null)
-                        stm.setTimestamp(3, sellMedicine.getDate());
-                    else 
-                        stm.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
-
-                    stm.executeUpdate();
-                }
-
-                conn.commit();
-
-                return 1;
-            }  
+            return 1;
         }
     }
     public Stat sumSellByYear(Integer nam) throws SQLException {
@@ -128,5 +126,23 @@ public class SellMedicineServices {
 
             return true;
         }
+    }
+    
+    public int getUnitInStock(int medicineID) throws SQLException {
+        try (Connection conn = JdbcUtils.getConn()) {
+            PreparedStatement statement = conn.prepareCall("SELECT m.UnitInStock FROM pharmacydb.medicines m WHERE m.ID = ?");
+            statement.setInt(1, medicineID);
+            
+            ResultSet result = statement.executeQuery();
+            
+            while (result.next()) {
+                return result.getInt("UnitInStock");
+            }
+            return -1;
+        }
+    }
+    
+    public boolean checkValidUnitInStock(int medicineID, int quantity) throws SQLException {
+        return quantity <= getUnitInStock(medicineID);
     }
 }
