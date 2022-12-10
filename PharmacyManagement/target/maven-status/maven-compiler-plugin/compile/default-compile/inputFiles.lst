@@ -1,21 +1,23 @@
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\SellMedicineController.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\services\MedicineServices.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\Medicine.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\services\UserServices.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\App.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\MenuController.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\MedicineManagementController.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\utils\JdbcUtils.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\SecondaryController.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\services\UnitServices.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\utils\Utils.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\PrimaryController.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\SellMedicineStatController.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\services\SellMedicineServices.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\LoginController.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\SellMedicine.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\Unit.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\User.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\RegisterController.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\module-info.java
-D:\BTL kiem thu v3\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\Stat.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\App.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\MedicineManagementController.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\Unit.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\Medicine.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\SellMedicineStatController.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\utils\JdbcUtils.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\RegisterController.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\services\UnitServices.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\module-info.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\MemberRegisterController.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\PrimaryController.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\SellMedicine.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\Member.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\SecondaryController.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\MenuController.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\services\SellMedicineServices.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\services\MedicineServices.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\LoginController.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\Stat.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\utils\Utils.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pharmacymanagement\SellMedicineController.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\services\UserServices.java
+E:\KTPM\KTPM_Pharmacy\PharmacyManagement\src\main\java\com\nad\pojo\User.java

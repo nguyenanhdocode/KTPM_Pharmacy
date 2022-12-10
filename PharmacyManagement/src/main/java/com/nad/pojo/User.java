@@ -18,6 +18,7 @@ public class User {
     private String address;
 
     public User() {
+        
     }
 
     public User(Integer id, String userName, String passWord, String firstName, String lastName, String gender, String address) {

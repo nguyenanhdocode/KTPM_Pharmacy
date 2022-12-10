@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -186,32 +187,25 @@ public class SellMedicineController implements Initializable {
     }
     
     private void loadTableMedicine() {
-        TableColumn col1 = new TableColumn("Ma thuoc");
+        TableColumn col1 = new TableColumn("Mã thuốc");
         col1.setCellValueFactory(new PropertyValueFactory("id"));
+        col1.setMinWidth(50);
+        
 
-        TableColumn col2 = new TableColumn("Ten thuoc");
+        TableColumn col2 = new TableColumn("Tên thuốc");
         col2.setCellValueFactory(new PropertyValueFactory("brandName"));
+        col2.setMinWidth(200);
 
-        TableColumn col3 = new TableColumn("Ten hoat chat");
+        TableColumn col3 = new TableColumn("Tên hoạt chất");
         col3.setCellValueFactory(new PropertyValueFactory("chemicalName"));
+        col3.setMinWidth(200);
         
-        TableColumn col4 = new TableColumn("Ma don vi");
-        col4.setCellValueFactory(new PropertyValueFactory("unitId"));
+        TableColumn col4 = new TableColumn("Giá");
+        col4.setCellValueFactory(new PropertyValueFactory("unitPrice"));
+        col4.setMinWidth(100);
         
-        TableColumn col5 = new TableColumn("Ton kho");
-        col5.setCellValueFactory(new PropertyValueFactory("unitInStock"));
-        
-        TableColumn col6 = new TableColumn("Gia");
-        col6.setCellValueFactory(new PropertyValueFactory("unitPrice"));
-        
-        TableColumn col7 = new TableColumn("Cho phep toi da");
-        col7.setCellValueFactory(new PropertyValueFactory("allowedUnitInStock"));
-        
-        TableColumn col8 = new TableColumn("Dat nuoc san xuat");
-        col8.setCellValueFactory(new PropertyValueFactory("producingCountry"));
-        
-        TableColumn col9 = new TableColumn("");
-        col9.setCellFactory(param -> new TableCell<Medicine, String>() {
+        TableColumn col5 = new TableColumn("");
+        col5.setCellFactory(param -> new TableCell<Medicine, String>() {
             final Button btnChonThuoc = new Button("Chọn thuốc");
 
             @Override
@@ -247,7 +241,7 @@ public class SellMedicineController implements Initializable {
             }
         });
         
-        this.tbMedicine.getColumns().addAll(col1, col2, col3, col4, col5, col6, col7, col8, col9);
+        this.tbMedicine.getColumns().addAll(col1, col2, col3, col4, col5);
     }
     
     private void loadTableSellMedicine() { 

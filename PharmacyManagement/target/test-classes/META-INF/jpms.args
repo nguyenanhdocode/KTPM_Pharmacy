@@ -1,0 +1,4 @@
+--patch-module
+com.nad.pharmacymanagement=_
+--add-reads
+com.nad.pharmacymanagement=ALL-UNNAMED

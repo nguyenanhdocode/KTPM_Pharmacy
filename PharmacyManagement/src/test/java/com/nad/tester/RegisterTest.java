@@ -52,8 +52,8 @@ public class RegisterTest {
     public void testRegister() throws SQLException {
         User user = new User();
         
-        user.setId(714490483);
-        user.setUserName("haik2");
+        user.setId(0);
+        user.setUserName("haik2FF");
         user.setPassWord("1");
         user.setFirstName("hai");
         user.setLastName("Phan");

@@ -27,4 +27,8 @@ public class Utils {
         alert.initOwner(owner);
         alert.show();
     }
+    
+    public static boolean isNullOrEmpty(String str) {
+        return str == null || str.trim().isEmpty();
+    }
 }

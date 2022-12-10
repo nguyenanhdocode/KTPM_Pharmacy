@@ -4,6 +4,7 @@
  */
 package com.nad.services;
 
+import com.nad.pojo.Member;
 import com.nad.pojo.User;
 import com.nad.utils.JdbcUtils;
 import com.nad.utils.Utils;
@@ -163,6 +164,19 @@ public class UserServices {
             }
             
             return user;
+        }
+    }
+    
+    public static int MemberRegister(Member member) throws SQLException {
+        try(Connection connect = JdbcUtils.getConn()) {
+            String sql = "INSERT INTO Members (FirstName, LastName, Phone, Address)"
+                    + "VALUES (?, ?, ?, ?)";
+            PreparedStatement statement = connect.prepareCall(sql);
+            statement.setString(1, member.getFirstName());
+            statement.setString(2, member.getLastName());
+            statement.setString(3, member.getPhone());
+            statement.setString(4, member.getAddress());
+            return statement.executeUpdate();
         }
     }
 }

@@ -82,15 +82,17 @@ public class RegisterController implements Initializable {
             Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa nhập tên UserName");
             return;
         }
+        
+        if (txtLastName.getText().isEmpty()) {
+            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa nhập họ của bạn");
+            return;
+        }
 
         if (txtFirstName.getText().isEmpty()) {
             Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa nhập tên của bạn");
             return;
         }
-        if (txtLastName.getText().isEmpty()) {
-            Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa nhập họ của bạn");
-            return;
-        }
+        
         if ((!rdbNam.isSelected()&&!rdbNu.isSelected())) {
             Utils.showAlert(Alert.AlertType.ERROR, owner, "Lỗi!", "Chưa chọn giới tính của bạn");
             return;

@@ -2,17 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nad.pharmacymanagement.SellMedicineController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="750.0" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nad.pharmacymanagement.SellMedicineController">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ban thuoc" />
       
@@ -26,57 +24,57 @@
                            <children>
                               <HBox prefHeight="0.0" prefWidth="600.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã thuốc" />
-                                    <TextField fx:id="txtIDMedicine" prefHeight="26.0" prefWidth="544.0" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã thuốc" wrappingWidth="103.99060821533203" />
+                                    <TextField fx:id="txtIDMedicine" prefHeight="26.0" prefWidth="578.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="0.0" prefWidth="600.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tên thuốc" />
-                                    <TextField fx:id="txtBrandName" prefHeight="26.0" prefWidth="541.0" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tên thuốc" wrappingWidth="103.26327514648438" />
+                                    <TextField fx:id="txtBrandName" prefHeight="26.0" prefWidth="574.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="0.0" prefWidth="600.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hoạt chất" />
-                                    <TextField fx:id="txtChemicalName" prefHeight="26.0" prefWidth="541.0" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hoạt chất" wrappingWidth="103.51563262939453" />
+                                    <TextField fx:id="txtChemicalName" prefHeight="26.0" prefWidth="573.0" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="176.0" prefHeight="0.0" prefWidth="600.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Đơn vị tính" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Đơn vị tính" wrappingWidth="103.75430297851562" />
                                     <ComboBox fx:id="cbxUnit" prefHeight="26.0" prefWidth="181.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="0.0" prefWidth="600.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tồn kho" />
-                                    <TextField fx:id="txtUnitInStock" prefHeight="26.0" prefWidth="512.0" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tồn kho" wrappingWidth="103.18360137939453" />
+                                    <TextField fx:id="txtUnitInStock" prefHeight="26.0" prefWidth="573.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="0.0" prefWidth="600.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giá" />
-                                    <TextField fx:id="txtUnitPrice" prefHeight="26.0" prefWidth="518.0" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giá" wrappingWidth="103.6441650390625" />
+                                    <TextField fx:id="txtUnitPrice" prefHeight="26.0" prefWidth="572.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="0.0" prefWidth="600.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng cho phép" />
-                                    <TextField fx:id="txtAllowedUnitInStock" prefHeight="26.0" prefWidth="562.0" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng cho phép" wrappingWidth="103.99298095703125" />
+                                    <TextField fx:id="txtAllowedUnitInStock" prefHeight="26.0" prefWidth="570.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="0.0" prefWidth="600.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quốc gia sản xuất" />
-                                    <TextField fx:id="txtProducingCountry" prefHeight="26.0" prefWidth="562.0" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quốc gia sản xuất" wrappingWidth="103.61053466796875" />
+                                    <TextField fx:id="txtProducingCountry" prefHeight="26.0" prefWidth="570.0" />
                                  </children>
                               </HBox>
                               
                               
                               <HBox prefHeight="0.0" prefWidth="600.0">
                                  <children>
-                                    <Button fx:id="btnLamMoi" mnemonicParsing="false" text="Làm mới" />
+                                    <Button fx:id="btnLamMoi" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Làm mới" />
                                  </children>
                               </HBox>
                            </children>
@@ -84,7 +82,7 @@
                         <HBox prefHeight="0.0" prefWidth="600.0">
                            <children>
                               <ComboBox fx:id="cbxLoaiTimKiem" prefWidth="150.0" />
-                              <TextField fx:id="txtKeywords" prefHeight="26.0" prefWidth="443.0" />
+                              <TextField fx:id="txtKeywords" prefHeight="26.0" prefWidth="532.0" />
                            </children>
                         </HBox>
                         <TableView fx:id="tbMedicine" prefHeight="200.0" prefWidth="600.0" />
@@ -97,7 +95,7 @@
                   <VBox prefHeight="499.0" prefWidth="900.0">
                      <children>
                         <TableView fx:id="tbSellMedicine" prefHeight="200.0" prefWidth="200.0" />
-                        <Button mnemonicParsing="false" onAction="#SellMedicineHander" text="Bán" />
+                        <Button mnemonicParsing="false" onAction="#SellMedicineHander" prefHeight="26.0" prefWidth="112.0" text="Bán" />
                      </children></VBox>
                </content>
           </Tab>

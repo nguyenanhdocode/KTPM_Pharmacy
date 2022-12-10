@@ -60,4 +60,16 @@ public class MenuController implements Initializable {
         stage.show();
         
     }
+    
+    public void registerMemberHandler(ActionEvent evt) throws IOException {
+        
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("FXMLMemberRegister.fxml"));
+
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Đăng ký thành viên");
+        stage.show();
+        
+    }
 }
